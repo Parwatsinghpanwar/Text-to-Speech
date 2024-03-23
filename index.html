@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text-to-Speech</title>
+<style>
+body{
+   background-color: beige;
+}
+h1{
+   text-align: center;
+}
+div.justifid{
+display: flex;
+justify-content: center;
+
+}
+</style>
+</head>
+<body>
+
+<h1>Text-to-Speech</h1>
+<div class="justifid">
+<textarea id="textbox" rows="4" cols="50"></textarea><br>
+<button id="speakbtn" onclick="speak()">Speak</button>
+</div>
+<script>
+   function speak(){
+    let synth = window.speechSynthesis;
+    let voice = new SpeechSynthesisUtterance(`${textbox.value}`);
+    let sounds = synth.getVoices();
+    voice.voice =  sounds[9];
+    voice.pitch = 0.5;
+    voice.rate = 0.3; 
+    synth.speak(voice);
+   }
+</script>
+
+</body>
+</html>
